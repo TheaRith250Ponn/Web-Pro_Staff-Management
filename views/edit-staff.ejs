@@ -1,0 +1,53 @@
+<%- include ('partials/header.ejs'); -%>
+<div class="container">
+    <% if (message) { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+
+    <% if (staff) { %>
+        <form class="add-staff-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="first-name">First Name</label>
+                    <input type="text" class="form-control" name="first_name" id="first-name" value="<%= staff.first_name %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" class="form-control" name="last_name" id="last-name" value="<%= staff.last_name %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" value="<%= staff.user_name %>" required disabled title="Username can't be changed">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="number">Salary</label>
+                    <input type="number" class="form-control" name="number" id="salary" placeholder="Salary" value="<%= staff.number %>" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="position">Position</label>
+                    <select id="position" name="position" class="form-control" required>
+                        <option selected><%= staff.position %></option>
+                        <option>IT Manager</option>
+                        <option>IT Support</option>
+                        <option>Admin & HR</option>
+                        <option>Accountant</option>
+                        <option>Stock Controller</option>
+                        <option>Support Staff</option>
+                        <option>Housekeeper</option>
+                        <option>Security Guard</option>
+                        <option>Helpdesk</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success float-right">Update Staff</button>
+        </form>
+    <% } else { %>
+        <p class="text-center">staff Not Found. Go <a href="/add">here</a> to add staff.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>
